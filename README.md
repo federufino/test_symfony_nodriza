@@ -22,3 +22,5 @@ You can find "collections" for postman and swagger to test the API:
 collection/postman.json
 collection/swagger.yaml
 ```
+
+I have maintained a GET endpoint without parameters (Planet List in DB) of the list of planets in the database in addition to the one that obtains the data from https://swapi.dev/.
