@@ -1,0 +1,208 @@
+swagger: '2.0'
+info:
+  description: ''
+  version: 1.0.0
+  title: 'Swagger Test Symfony Nodriza - Rufino'
+  termsOfService: 'http://swagger.io/terms/'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: localhost
+schemes:
+  - https
+  - http
+paths:
+  /planets/:
+    get:
+      tags:
+        - planets
+      summary: 'Planet List in DB'
+      operationId: listPlanet
+      produces:
+        - application/json
+      parameters: {  }
+      responses:
+        200:
+          description: 'successful operation'
+          schema:
+            type: object
+            properties:
+              jsonapi:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: '1.0'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: '/planets?page[number]=1&page[size]=100'
+                  first:
+                    type: string
+                    example: '/planets?page[number]=1&page[size]=100'
+                  last:
+                    type: string
+                    example: '/planets?page[number]=1&page[size]=100'
+                  prev:
+                    type: string
+                    example: 'null'
+                  next:
+                    type: string
+                    example: 'null'
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                      example: 12
+                    type:
+                      type: string
+                      example: planets
+                    attributes:
+                      $ref: '#/definitions/Planet'
+                    relationships:
+                      properties: {  }
+    post:
+      tags:
+        - planet
+      summary: 'Add Planet'
+      operationId: addPlanet
+      produces:
+        - application/json
+      parameters:
+        -
+          in: body
+          name: body
+          description: addPlanet
+          required: true
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: planets
+                  attributes:
+                    $ref: '#/definitions/Planet'
+                  relationships:
+                    properties: {  }
+      responses:
+        200:
+          description: 'successful operation'
+          schema:
+            type: object
+            properties:
+              jsonapi:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: '1.0'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /planets
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 12
+                  type:
+                    type: string
+                    example: planets
+                  attributes:
+                    $ref: '#/definitions/Planet'
+                  relationships:
+                    properties: {  }
+    get:
+      tags:
+        - planets
+      summary: 'Get Planet from swapi.dev'
+      operationId: viewPlanet
+      produces:
+        - application/json
+      parameters:
+        -
+          name: Planet_id
+          in: path
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: 'successful operation'
+          schema:
+            type: object
+            properties:
+              jsonapi:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: '1.0'
+              links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    example: /planets
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    example: 12
+                  type:
+                    type: string
+                    example: planets
+                  attributes:
+                    $ref: '#/definitions/Planet'
+                  relationships:
+                    properties: {  }
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Planet:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      name:
+        type: string
+      rotation_period:
+        type: integer
+        format: int32
+      orbital_period:
+        type: integer
+        format: int32
+      diameter:
+        type: integer
+        format: int32
+      films_count:
+        type: integer
+        format: int32
+      created:
+        type: string
+        format: date-time
+      edited:
+        type: string
+        format: date-time
+externalDocs:
+  description: 'Find out more about Swagger'
+  url: 'http://swagger.io'

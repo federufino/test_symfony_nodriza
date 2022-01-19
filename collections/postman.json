@@ -1,0 +1,86 @@
+{
+    "info": {
+        "name": "Test Symfony Nodriza - Rufino",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Planet",
+            "description": "",
+            "item": [
+                {
+                    "name": "Planet List in DB",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": "",
+                        "url": {
+                            "raw": "{{host}}\/planets\/",
+                            "host": [
+                                "{{host}}"
+                            ],
+                            "path": [
+                                "\/planets",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Planet",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"data\": {\n        \"type\": \"planets\",\n        \"attributes\": {\n            \"id\": \"integer\",\n            \"name\": \"string\",\n            \"rotation_period\": \"integer\",\n            \"orbital_period\": \"integer\",\n            \"diameter\": \"integer\",\n            \"films_count\": \"integer\",\n            \"created\": \"datetime\",\n            \"edited\": \"datetime\"\n        },\n        \"relationships\": []\n    }\n}"
+                        },
+                        "url": {
+                            "raw": "{{host}}\/planet\/",
+                            "host": [
+                                "{{host}}"
+                            ],
+                            "path": [
+                                "\/planet",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Planet from swapi.dev",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": "",
+                        "url": {
+                            "raw": "{{host}}\/planets\/1",
+                            "host": [
+                                "{{host}}"
+                            ],
+                            "path": [
+                                "\/planets",
+                                "1"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
